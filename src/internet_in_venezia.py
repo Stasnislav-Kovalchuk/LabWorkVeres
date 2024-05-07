@@ -1,4 +1,4 @@
-from heap_priority_queue import PriorityQueue
+from .heap_priority_queue import PriorityQueue
 
 
 def prim_mst(graph: [[int]]) -> int:
@@ -30,8 +30,9 @@ def prim_mst(graph: [[int]]) -> int:
             visited.add(destination_vertex)
             mst_cost += graph[start_vertex][destination_vertex]
 
-            for neighbor, weight in enumerate(graph[destination_vertex]):
-                if weight != 0 and neighbor not in visited:
+            for neighbor in range(len(graph[start_vertex])):
+                weight = graph[destination_vertex][neighbor]
+                if weight != 0:
                     pq.insert((destination_vertex, neighbor), weight)
 
     return mst_cost

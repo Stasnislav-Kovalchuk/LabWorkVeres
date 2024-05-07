@@ -1,5 +1,5 @@
 import unittest
-from internet_in_venezia import *
+from src.internet_in_venezia import *
 
 class MyTestCase(unittest.TestCase):
     def test_1(self):
