@@ -1,34 +1,50 @@
-def prim_mst(graph):
-    n = len(graph)
-    visited = [False] * n
+from heap_priority_queue import PriorityQueue
+
+
+def prim_mst(graph: [[int]]) -> int:
+    """
+    its function to find sum of min span tree
+    :param graph:
+    :return: mst_cost (min span tree cost)
+    """
+    graph_length = len(graph)
+    visited = set()
     start_vertex = 0
-    visited[start_vertex] = True
+    visited.add(start_vertex)
     mst_cost = 0
 
-    while True:
-        min_weight = float('inf')
-        min_edge = None
+    # Priority queue to store edges
+    pq = PriorityQueue()
 
-        for i in range(n):
-            if visited[i]:
-                for j in range(n):
-                    if not visited[j] and 0 < graph[i][j] < min_weight:
-                        min_weight = graph[i][j]
-                        min_edge = (i, j)
+    # Add all edges from the start vertex to the priority queue
+    for neighbor in range(graph_length):
+        weight = graph[start_vertex][neighbor]
+        if weight != 0:
+            pq.insert((start_vertex, neighbor), weight)
 
-        if min_edge is None:
-            break
+    while pq.array:
+        min_edge = pq.delete_first_priority()
+        start_vertex, destination_vertex = min_edge
 
-        u, v = min_edge
-        visited[v] = True
-        mst_cost += min_weight
+        if destination_vertex not in visited:
+            visited.add(destination_vertex)
+            mst_cost += graph[start_vertex][destination_vertex]
+
+            for neighbor, weight in enumerate(graph[destination_vertex]):
+                if weight != 0 and neighbor not in visited:
+                    pq.insert((destination_vertex, neighbor), weight)
 
     return mst_cost
 
-def read_graph(data):
+
+def read_graph(data: str) -> [[int]]:
+    """
+
+    :param data:
+    :return: graph
+    """
     graph = []
     with open(data, 'r') as file:
         for line in file:
             graph.append(list(map(int, line.strip().split(';'))))
     return graph
-
