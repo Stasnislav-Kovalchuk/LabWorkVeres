@@ -1,5 +1,5 @@
 import unittest
-from src.SearchIslands import num_of_island
+from src.search_Islands import num_of_island
 
 
 class TestOfInorderTraversal(unittest.TestCase):
