@@ -1,6 +1,6 @@
 import unittest
-from src.BinaryTreeFirstMax import searching_first_biggest
-from src.BinaryTreeFirstMax import Node
+from src.binary_tree_first_max import searching_first_biggest
+from src.binary_tree_first_max import Node
 
 
 class TestOfInorderTraversal(unittest.TestCase):
