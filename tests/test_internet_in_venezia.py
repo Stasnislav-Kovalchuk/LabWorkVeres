@@ -1,6 +1,7 @@
 import unittest
 from src.internet_in_venezia import *
 
+
 class MyTestCase(unittest.TestCase):
     def test_1(self):
         result = read_graph('Venezia_1.csv')
@@ -44,5 +45,7 @@ class MyTestCase(unittest.TestCase):
         result = prim_mst(graph)
         self.assertEqual(result, 20)
 
+
 if __name__ == '__main__':
     unittest.main()
+
