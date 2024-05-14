@@ -1,4 +1,4 @@
-from src.Marichka_pumpkins import gardener_bot
+from src.marichka_pumpkins import gardener_bot
 import unittest
 
 
