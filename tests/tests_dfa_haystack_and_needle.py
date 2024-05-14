@@ -1,5 +1,6 @@
 import unittest
-from DFAHaystackAndNeedle import search_num_of_in
+from src.dfa_haystack_and_needle import search_num_of_in
+
 
 class TestSearchNumOfIn(unittest.TestCase):
     def test_single_occurrence(self):
